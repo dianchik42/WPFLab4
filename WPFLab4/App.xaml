@@ -1,0 +1,33 @@
+﻿<Application x:Class="WPFLab4.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPFLab4"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <!-- Базовый стиль для окон (пример) -->
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <!-- Стиль для игрового поля (Border) -->
+        <Style x:Key="GameAreaBorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Background" Value="#FFF9F9F9"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+        </Style>
+
+        <!-- Стиль для TextBlock карты -->
+        <Style x:Key="MapTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+        </Style>
+
+    </Application.Resources>
+</Application>

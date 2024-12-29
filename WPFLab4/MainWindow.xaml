@@ -1,0 +1,93 @@
+﻿<Window x:Class="WPFLab4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLab4"
+        mc:Ignorable="d"
+        Title="Поиск сокровищ" Height="450" Width="800" KeyDown="Window_KeyDown">
+    <!-- Обратите внимание на колонки: первая — основное поле, вторая — панель помощи -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Первая колонка (игра), занимает всё доступное пространство -->
+            <ColumnDefinition Width="*" />
+            <!-- Вторая колонка (справка), фиксированная или относительная ширина -->
+            <ColumnDefinition Width="250" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Для панели с кнопками -->
+            <RowDefinition Height="*"/>
+            <!-- Для карты и статуса -->
+        </Grid.RowDefinitions>
+
+        <!-- ВЕРХНЯЯ ПАНЕЛЬ КНОПОК (1-я колонка, 1-я строка) -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5"
+                    Grid.Column="0" Grid.Row="0">
+            <Button Content="Новая игра" Click="NewGameButton_Click" Margin="5"/>
+            <Button Content="Загрузить"   Click="LoadButton_Click"   Margin="5"/>
+            <Button Content="Сохранить"   Click="SaveButton_Click"   Margin="5"/>
+            <Button Content="Настройки"   Click="SettingsButton_Click" Margin="5"/>
+        </StackPanel>
+
+        <!-- ОСНОВНОЕ ПОЛЕ (КАРТА + СТАТУС) (1-я колонка, 2-я строка) -->
+        <!-- 
+             Игровая область: Border + внутрь StackPanel с TextBlock’ами 
+             для карты и статуса 
+        -->
+        <Border Grid.Column="0" 
+        Grid.Row="1"
+        Margin="5"
+        Style="{StaticResource GameAreaBorderStyle}">
+            <StackPanel>
+                <TextBlock x:Name="MapTextBlock"
+                   Style="{StaticResource MapTextBlockStyle}" />
+                <TextBlock x:Name="StatusTextBlock" 
+                   Margin="0,10,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ПАНЕЛЬ СПРАВКИ (2-я колонка, занимаем все строки целиком с помощью RowSpan="2") -->
+        <Border Grid.Column="1" 
+                Grid.Row="0" 
+                Grid.RowSpan="2" 
+                Background="#FFEEEEEE"
+                Padding="10"
+                BorderBrush="Gray" 
+                BorderThickness="1"
+                Margin="5">
+            <StackPanel>
+                <TextBlock Text="Справка" 
+                           FontWeight="Bold" 
+                           FontSize="16" 
+                           Margin="0,0,0,10"/>
+
+                <TextBlock Text="Управление:"
+                           FontWeight="Bold"
+                           Margin="0,0,0,5"/>
+                <TextBlock Text="- W: вверх&#x0a;- S: вниз&#x0a;- A: влево&#x0a;- D: вправо&#x0a;- Escape: выход/меню"
+                           TextWrapping="Wrap"
+                           Margin="20,0,0,10"/>
+
+                <TextBlock Text="Правила игры:"
+                           FontWeight="Bold"
+                           Margin="0,0,0,5"/>
+                <TextBlock Text="1. Соберите все сокровища (T)." 
+                           TextWrapping="Wrap"
+                           Margin="20,0,0,2"/>
+                <TextBlock Text="2. Избегайте столкновения с врагами (E)."
+                           TextWrapping="Wrap"
+                           Margin="20,0,0,10"/>
+
+                <TextBlock Text="Обозначения:"
+                           FontWeight="Bold"
+                           Margin="0,0,0,5"/>
+                <TextBlock Text="P - игрок&#x0a;T - сокровище&#x0a;E - враг&#x0a;. - свободное пространство"
+                           TextWrapping="Wrap"
+                           Margin="20,0,0,0"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
